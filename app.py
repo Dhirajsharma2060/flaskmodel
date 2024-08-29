@@ -9,7 +9,9 @@ app = Flask(__name__)
 def create_mongo_client():
     username = 'Dhiraj2060'
     password = 'Vimal502'
-    connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority&appName=asmthamacluster0'
+    #connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority&appName=asmthamacluster0'
+    connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/?retryWrites=true&w=majority&appName=asmthamacluster0'
+
     return MongoClient(connection_string)
 
 # Initialize model
