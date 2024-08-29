@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, jsonify
 from pymongo import MongoClient
 import ml_model  # Ensure this file defines a load_model() function that returns a trained model
-import numpy as np
+#import numpy as np
 
 app = Flask(__name__)
 model = ml_model.load_model()  # Load your pre-trained model
