@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asthma Care Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light cyan background for a calming effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 75vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            border: 1px solid #b2ebf2; /* Light cyan-gray border */
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+        h1, h2 {
+            color: #00796b; /* Dark cyan for headings */
+            text-align: center;
+            margin: 0 0 20px;
+        }
+        .result {
+            padding: 20px;
+            background-color: #f1f8f9; /* Very light cyan for the result box */
+            border: 1px solid #b2ebf2; /* Light cyan border */
+            border-radius: 8px;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.98);
+            animation: fadeInScale 1s ease-out 0.5s forwards; /* Advanced result box animation */
+        }
+        .result p {
+            margin: 10px 0;
+            line-height: 1.6;
+            color: #333; /* Darker text color for readability */
+        }
+        .result a {
+            color: #00bcd4; /* Bright cyan for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Asthma Care Chatbot</h1>
+        
+        <div class="result">
+            <h2>Hello {{ name }}!</h2>
+            <p><strong>Gender:</strong> {{ gender }}</p>
+            <p><strong>Severity Prediction:</strong> Severe ({{ severity }})</p>
+            <p><strong>Recommendation:</strong></p>
+            <p>{{ recommendation | safe }}</p>
+        </div>
+    </div>
+</body>
+</html>

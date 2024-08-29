@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asthma Care Chatbot</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light cyan background for a calming effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 140vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #b2ebf2; /* Light cyan-gray border */
+            animation: fadeIn 1s ease-out;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #b2ebf2; /* Soft cyan border */
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 40px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .header h1 {
+            color: #00796b; /* Dark cyan for a professional look */
+            margin: 0;
+            font-size: 28px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00796b; /* Dark cyan */
+            font-weight: bold;
+            font-size: 16px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #b2ebf2; /* Light cyan border */
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+            outline: none;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        .radio-label {
+            margin-right: 20px;
+            color: #00796b; /* Dark cyan */
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #00bcd4; /* Bright cyan for the button */
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0097a7; /* Darker cyan on hover */
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f8f9; /* Very light cyan for the result box */
+            border: 1px solid #b2ebf2; /* Light cyan border */
+            border-radius: 4px;
+        }
+        .result h2 {
+            color: #00bcd4; /* Matching bright cyan for result header */
+            margin: 0 0 10px;
+        }
+        .result p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .result a {
+            color: #00bcd4; /* Matching bright cyan */
+            text-decoration: none;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://img.icons8.com/ios/50/000000/stethoscope.png" alt="Stethoscope Icon">
+            <h1>Asthma Care Chatbot</h1>
+        </div>
+        <form action="/predict" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="tiredness">Tiredness (yes/no):</label>
+            <input type="text" id="tiredness" name="tiredness" required>
+
+            <label for="dry_cough">Dry Cough (yes/no):</label>
+            <input type="text" id="dry_cough" name="dry_cough" required>
+
+            <label for="difficulty_breathing">Difficulty in Breathing (yes/no):</label>
+            <input type="text" id="difficulty_breathing" name="difficulty_breathing" required>
+
+            <label for="sore_throat">Sore Throat (yes/no):</label>
+            <input type="text" id="sore_throat" name="sore_throat" required>
+
+            <label for="nasal_congestion">Nasal Congestion (yes/no):</label>
+            <input type="text" id="nasal_congestion" name="nasal_congestion" required>
+
+            <label for="runny_nose">Runny Nose (yes/no):</label>
+            <input type="text" id="runny_nose" name="runny_nose" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label>Gender:</label>
+            <div>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male" class="radio-label">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female" class="radio-label">Female</label>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
