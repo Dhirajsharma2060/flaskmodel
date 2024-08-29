@@ -1,19 +1,27 @@
 from flask import Flask, request, render_template, jsonify
 from pymongo import MongoClient
 import ml_model  # Ensure this file defines a load_model() function that returns a trained model
-#import numpy as np
 from urllib.parse import quote_plus
+
 app = Flask(__name__)
-model = ml_model.load_model()  # Load your pre-trained model
 
-# MongoDB Atlas setup
-username = 'Dhiraj2060'  # Your MongoDB Atlas username
-password = 'Vimal502'  # Replace with your actual password
-connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority&appName=asmthamacluster0'
+# Function to create a new MongoClient instance
+def create_mongo_client():
+    username = 'Dhiraj2060'
+    password = 'Vimal502'
+    connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority&appName=asmthamacluster0'
+    return MongoClient(connection_string)
 
-client = MongoClient(connection_string)
-db = client['asthma_care']
-collection = db['predictions']
+# Initialize model
+model = ml_model.load_model()
+
+@app.before_request
+def before_request():
+    """Initialize MongoDB client and set up database connection for each request."""
+    global db, collection
+    client = create_mongo_client()
+    db = client['asthma_care']
+    collection = db['predictions']
 
 def map_yes_no_to_int(answer):
     """Convert 'yes' or 'no' to 1 or 0."""
