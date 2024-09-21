@@ -1,17 +1,17 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect, url_for, session
 from pymongo import MongoClient
 import ml_model  # Ensure this file defines a load_model() function that returns a trained model
 from urllib.parse import quote_plus
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Required for session management
 
 # Function to create a new MongoClient instance
 def create_mongo_client():
     username = 'Dhiraj2060'
     password = 'Vimal502'
-    #connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority&appName=asmthamacluster0'
-    connection_string = f'mongodb+srv://{username}:{password}@asmthamacluster0.d6anv.mongodb.net/?retryWrites=true&w=majority&appName=asmthamacluster0'
-
+    connection_string = f'mongodb+srv://{username}:{quote_plus(password)}@asmthamacluster0.d6anv.mongodb.net/asthma_care?retryWrites=true&w=majority'
     return MongoClient(connection_string)
 
 # Initialize model
@@ -66,7 +66,9 @@ def get_recommendation(severity):
 @app.route('/')
 def index():
     """Render the main page of the application."""
-    return render_template('index.html')
+    if 'username' in session:
+        return render_template('index.html')
+    return redirect(url_for('login'))
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -129,6 +131,68 @@ def predict():
 
     except Exception as e:
         return jsonify({'error': str(e)})
+
+@app.route('/signup', methods=['GET'])
+def signup_form():
+    return render_template('signup.html')
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    username = request.form['username']
+    password = request.form['password']
+    confirm_password = request.form['confirm_password']
+
+    if not username or not password or not confirm_password:
+        return jsonify({'error': 'All fields are required!'}), 400
+
+    if password != confirm_password:
+        return jsonify({'error': 'Passwords do not match!'}), 400
+
+    # Check if user already exists
+    if collection.find_one({'username': username}):
+        return jsonify({'error': 'Username already exists!'}), 400
+
+    # Hash the password before storing it
+    hashed_password = generate_password_hash(password)
+
+    # Insert user into the database
+    collection.insert_one({
+        'username': username,
+        'password': hashed_password
+    })
+
+    # Redirect to login page after successful signup
+    return redirect(url_for('login'))
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Handle login form and authenticate users."""
+    if request.method == 'POST':
+        data = request.form
+        username = data['username']
+        password = data['password']
+        
+        # Find the user in the database
+        user = collection.find_one({'username': username})
+        
+        if not user:
+            return jsonify({'error': 'User does not exist!'}), 404
+        
+        # Check the password hash
+        if not check_password_hash(user['password'], password):
+            return jsonify({'error': 'Incorrect password!'}), 401
+        
+        # Set session data and redirect to index page on successful login
+        session['username'] = username
+        return redirect(url_for('index'))
+    
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    """Handle user logout."""
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

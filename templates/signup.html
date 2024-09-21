@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asthma Care - Signup</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #b2ebf2;
+            animation: fadeIn 1s ease-out;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #b2ebf2;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 40px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .header h1 {
+            color: #00796b;
+            margin: 0;
+            font-size: 28px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00796b;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #b2ebf2;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #00bcd4;
+            box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #00bcd4;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0097a7;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f8f9;
+            border: 1px solid #b2ebf2;
+            border-radius: 4px;
+        }
+        .result h2 {
+            color: #00bcd4;
+            margin: 0 0 10px;
+        }
+        .result p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .result a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #00796b;
+        }
+        .login-link a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://img.icons8.com/ios/50/000000/stethoscope.png" alt="Stethoscope Icon">
+            <h1>Asthma Care Signup</h1>
+        </div>
+        <form action="/signup" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+</body>
+</html>
