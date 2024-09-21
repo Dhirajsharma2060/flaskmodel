@@ -27,6 +27,7 @@
             border-radius: 8px;
             border: 1px solid #b2ebf2; /* Light cyan-gray border */
             animation: fadeIn 1s ease-out;
+            position: relative; /* Relative positioning for logout button */
         }
         .header {
             display: flex;
@@ -114,6 +115,25 @@
         .result a:hover {
             text-decoration: underline;
         }
+        .logout-button {
+            background-color: #f44336; /* Red for logout */
+            margin-top: 0; /* Remove top margin */
+            display: flex;
+            align-items: center; /* Center icon and text */
+            text-decoration: none; /* Remove underline from link */
+            padding: 10px 15px; /* Add padding */
+            border-radius: 6px; /* Match button styling */
+            color: #ffffff; /* White text */
+            position: absolute; /* Position it absolutely */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+        }
+        .logout-button img {
+            margin-right: 5px; /* Space between icon and text */
+        }
+        .logout-button:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
     </style>
 </head>
 <body>
@@ -122,6 +142,9 @@
             <img src="https://img.icons8.com/ios/50/000000/stethoscope.png" alt="Stethoscope Icon">
             <h1>Asthma Care Chatbot</h1>
         </div>
+        <a href="/logout" class="button logout-button">
+            <img src="https://img.icons8.com/ios-filled/24/ffffff/logout-rounded-left.png" alt="Logout Icon"> Logout
+        </a>
         <form action="/predict" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>

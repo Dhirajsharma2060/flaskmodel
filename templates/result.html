@@ -55,6 +55,22 @@
         .result a:hover {
             text-decoration: underline;
         }
+        .button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            background-color: #00bcd4; /* Bright cyan for button */
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0097a7; /* Darker cyan on hover */
+        }
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -88,6 +104,7 @@
             <p><strong>Recommendation:</strong></p>
             <p>{{ recommendation | safe }}</p>
         </div>
+        <a href="{{ url_for('index') }}" class="button">Back to Home</a>
     </div>
 </body>
 </html>
