@@ -1,5 +1,7 @@
 # Asthma Care chatbot Web Application
 
+![Asthma Care](https://img.icons8.com/ios/100/000000/stethoscope.png)
+
 ## Overview
 The Asthma Care Prediction Web App is designed to assist users in monitoring their asthma symptoms and receiving personalized recommendations based on the severity of their condition. The application leverages machine learning and integrates with MongoDB for data storage, providing a user-friendly interface for symptom logging and health advice.
 
