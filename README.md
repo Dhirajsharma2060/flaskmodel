@@ -1,31 +1,31 @@
-# Asthma Care chatbot Web Application
+# Asthma Care Chatbot Web Application
 
-![Asthma Care](https://img.icons8.com/ios/100/000000/stethoscope.png)
+![Asthma Care](https://img.icons8.com/ios-filled/100/ffffff/stethoscope.png)
 
 ## Overview
-The Asthma Care Prediction Web App is designed to assist users in monitoring their asthma symptoms and receiving personalized recommendations based on the severity of their condition. The application leverages machine learning and integrates with MongoDB for data storage, providing a user-friendly interface for symptom logging and health advice.
+The **Asthma Care Prediction Web App** is designed to assist users in monitoring their asthma symptoms and receiving personalized recommendations based on the severity of their condition. The application leverages machine learning and integrates with MongoDB for data storage, providing a user-friendly interface for symptom logging and health advice.
 
-## Features
-- **User Authentication**: Sign-up and login functionality using Flask sessions and MongoDB.
-- **Asthma Severity Prediction**: Machine learning model to predict asthma severity based on user symptoms.
-- **Personalized Recommendations**: Tailored health advice depending on the severity of asthma symptoms.
-- **MongoDB Integration**: Store user details, symptoms, and prediction results in a MongoDB database.
-- **Secure Password Storage**: Passwords are hashed using `werkzeug.security`.
-- **Responsive UI**: Simple and intuitive interface for user interaction.
+## Features ✨
+- 🔒 **User Authentication**: Sign-up and login functionality using Flask sessions and MongoDB.
+- 🤖 **Asthma Severity Prediction**: Machine learning model to predict asthma severity based on user symptoms.
+- 📝 **Personalized Recommendations**: Tailored health advice depending on the severity of asthma symptoms.
+- 💾 **MongoDB Integration**: Store user details, symptoms, and prediction results in a MongoDB database.
+- 🔐 **Secure Password Storage**: Passwords are hashed using `werkzeug.security`.
+- 📱 **Responsive UI**: Simple and intuitive interface for user interaction.
 
-## Technology Stack
+## Technology Stack 🛠️
 - **Backend**: Flask (Python)
 - **Database**: MongoDB (MongoDB Atlas)
 - **Machine Learning**: Integrated via a custom `ml_model.py` module
 - **Frontend**: HTML/CSS (using Flask’s `render_template` for dynamic pages)
 - **Security**: Flask sessions and password hashing
 
-## Prerequisites
+## Prerequisites 📋
 - Python 3.x
 - MongoDB Atlas account (or local MongoDB installation)
 - Flask and other dependencies (listed in `requirements.txt`)
 
-## Installation and Setup
+## Installation and Setup 🚀
 
 ### 1. Clone the Repository
 ```bash
